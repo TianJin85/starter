@@ -38,3 +38,5 @@ def search_id():
 def search_search_criteria():
 
     return request.args.to_dict()
+
+

@@ -7,6 +7,7 @@
 @Software: PyCharm
 """
 from datetime import datetime
+from operator import or_, and_
 
 from lin import db
 
@@ -179,3 +180,9 @@ class Message(Love_message):
 
         return mess
 
+    @classmethod
+    def search(cls, sex, education, profession, housing, marriage, census, vehicle):
+        mess = Love_message.query.filter_by(sex=sex, education=education, profession=profession, housing=housing,\
+                                            marriage=marriage, census=census, vehicle=vehicle).all()
+
+        return mess

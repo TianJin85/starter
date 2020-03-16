@@ -117,4 +117,15 @@ def my_collect():
 @pers_api.route("/search_criteria", methods=["GET"])
 def search_criteria():
     data = request.args.to_dict()
-    return data
+    print(data)
+    result = {
+        "sex": data["sex"],
+        "education":data["education"],
+        "profession": data["profession"],
+        "housing": data["housing"],
+        "marriage": data["marriage"],
+        "census": data["census"],
+        "vehicle": data["vehicle"]
+    }
+    mess = Message.search(**result)
+    return jsonify(mess)

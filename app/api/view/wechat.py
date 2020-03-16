@@ -69,18 +69,6 @@ def index(userid=None):
                     userinfo["userid"] = userid
         else:
             return "登录失败"
-    #
-    # data = Message.get_index()          # 查询数据库
-    #
-    # for mess, select in data:
-    #     mess_dic = mess.__dict__
-    #
-    #     delattr(mess, "cardid")
-    #
-    #     setattr(mess, "images", eval(mess_dic["images"])[0])
-    #     setattr(mess, "userinfo", userinfo)
-    #     mess._fields.append("userinfo")
-    # result = jsonify(data)
     result = []
     data = Message.get_mess_all()
 
@@ -120,6 +108,11 @@ def activity_details(userid=None):
 def consumption(userid):
     return render_template("consumption.html")
 
+
+@wechat.route("/get_code", methods=["GET"])
+def get_code():
+
+    return ""
 
 @wechat.route("/enroll/<userid>", methods=["POST", "GET"])
 @wechat.route("/enroll", methods=["POST", "GET"])
