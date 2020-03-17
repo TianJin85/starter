@@ -25,7 +25,6 @@ class Love_user(Base):
 
     __tablename__ = "love_user"
     id = Column("id", Integer, primary_key=True, autoincrement=True, comment="用户id")
-    ctivity_id = Column("ctivity_id", String(120), comment="参与活动id")
     nickname = Column("nickname", String(32), comment="用户名称")
     openid = Column("openid", String(62), comment="用户标识", unique=True)
     unionid = Column("unionid", String(62), comment="接口凭证")
@@ -116,6 +115,7 @@ class Love_ctivity(Base):
 
     __tabelname__ = 'love_ctivity'
     id = Column("id", Integer, primary_key=True, autoincrement=True)
+    uid = Column("uid", String(300), comment="参与活动id")
     name = Column("name", String(62), nullable=False, comment="活动名称")
     address = Column("address", String(32), nullable=False, comment="活动地址")
     testarea = Column("testarea", String(20000), nullable=False, comment="活动简介")

@@ -8,6 +8,7 @@
 """
 from flask import request, jsonify
 from lin import admin_required
+from lin.exception import Success, UnknownException
 from lin.redprint import Redprint
 from werkzeug.datastructures import ImmutableMultiDict
 
@@ -27,7 +28,9 @@ def activity():
         if form.validate():
             result = eval(str(request.data, encoding='utf-8'))
             result.pop("num")
-            Ctivity.add_ctivity(**result)
+            if Ctivity.add_ctivity(**result):
+                return Success(msg="发布活动成功")
+            return UnknownException(msg="发布活动失败、活动名是否重复？")
     if request.method == "DELETE":
         return jsonify(request.data)
 

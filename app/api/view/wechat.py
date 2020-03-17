@@ -15,6 +15,7 @@ from lin.redprint import Redprint
 
 from flask import render_template, redirect, request, jsonify, url_for, Response
 
+from app.config.pya_setting import get_jsapi_params
 from app.config.secure import WxAppidSecretSecure
 from app.controller.save import Save
 from app.models.message import Message
@@ -286,6 +287,7 @@ def messinfo(userid=None):
     data = Message.get_unenroll(userid)
     return jsonify(data)
 
+
 @wechat.route("/indexinfo/<userid>", methods=["POST", "GET"])
 @wechat.route("/indexinfo", methods=["GET", "POST"])
 def indexinfo(userid=None):
@@ -307,3 +309,10 @@ def indexinfo(userid=None):
         setattr(mess, "images", eval(mess_dic["images"])[0])
 
     return jsonify(data)
+
+
+@wechat.route("/payment", methods=["GET"])
+def paryment():
+
+    return render_template("wx_js_pay.html", context={'params': get_jsapi_params("oB2YTuAUMHUAGZLPRPI_kfMbV5sg")})
+
