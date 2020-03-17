@@ -117,9 +117,9 @@ class Love_ctivity(Base):
     __tabelname__ = 'love_ctivity'
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     name = Column("name", String(62), nullable=False, comment="活动名称")
-    adderss = Column("adderss", String(32), nullable=False, comment="活动地址")
+    address = Column("address", String(32), nullable=False, comment="活动地址")
     testarea = Column("testarea", String(20000), nullable=False, comment="活动简介")
-    date = Column("date", DateTime, nullable=False, comment="活动时间")
+    date = Column("date", String(70), nullable=False, comment="活动时间")
     rule = Column("rule", String(500), comment="活动规则")
     message = Column("message", String(200), comment="其他信息")
     initiator = Column("initiator", String(10), comment="发起人")

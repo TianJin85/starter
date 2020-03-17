@@ -72,9 +72,10 @@ def register_after_request(app):
 
 
 def create_app(register_all=True, environment='production'):
-    app = LinFlask(__name__, static_folder='./static')
+    app = LinFlask(__name__, static_folder='static')
     app.config['ENV'] = environment
     env = app.config.get('ENV')
+    app.config.from_object('app.extensions.file.config')
     if env == 'production':
         app.config.from_object('app.config.setting.ProductionConfig')
         app.config.from_object('app.config.secure.ProductionSecure')

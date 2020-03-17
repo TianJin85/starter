@@ -117,6 +117,7 @@ def get_code():
 @wechat.route("/enroll/<userid>", methods=["POST", "GET"])
 @wechat.route("/enroll", methods=["POST", "GET"])
 def enroll(userid=None):
+    print(request.form)
     form = MessageForm(request.form)
 
     if request.method == "POST":
