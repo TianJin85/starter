@@ -71,7 +71,7 @@
 			<div class="shouj">
 				<ul class="shouj_ul">
 					<li id="telephone" >
-						<a href="tel:2100"><img src="{{ url_for('static', filename='images/wx1.png') }}" />
+						<a href="tel:2100"><img src="{{ url_for('static', filename='images/4328.png') }}" />
 							<p>手机</p>
 						</a>
 					</li>
@@ -110,15 +110,7 @@
 									<h4>家庭状况</h4>
 								</div>
 								<ul class="diz_ul" id="diz_ul">
-									<li><label>住房情况</label>
-										<p>自有住房</p>
-									</li>
-									<li><label>婚恋情况</label>
-										<p>离异</p>
-									</li>
-									<li><label>家庭主要成员</label>
-										<p>父亲、母亲、妹妹、弟弟</p>
-									</li>
+									
 								</ul>
 								<div class="more_cons" id="more_cons1">VIP会员免费查看以下信息 <span
 										class="mui-icon mui-icon-arrowdown"></span></div>
@@ -130,50 +122,7 @@
 									<h4>择偶要求</h4>
 								</div>
 								<ul class="diz_ul" id="diz_ul1">
-									<li>
-										<label>婚史要求</label>
-										<p>不限</p>
-									</li>
-									<li>
-										<label>年龄要求</label>
-										<p>33至38岁</p>
-									</li>
-									<li>
-										<label>最低身高要求</label>
-										<p>169cm</p>
-									</li>
-									<li>
-										<label>体重要求</label>
-										<p>65-85kg</p>
-									</li>
-									<li>
-										<label>外貌要求</label>
-										<p>高大健壮</p>
-									</li>
-									<li>
-										<label>最低年薪</label>
-										<p>不限</p>
-									</li>
-									<li>
-										<label>住房要求</label>
-										<p>不限</p>
-									</li>
-									<li>
-										<label>车辆要求</label>
-										<p>不限</p>
-									</li>
-									<li>
-										<label>地区要求</label>
-										<p>本地人</p>
-									</li>
-									<li>
-										<label>有无子女要求</label>
-										<p>不限</p>
-									</li>
-									<li>
-										<label>其他要求</label>
-										<p>安顺人，学历大专以上，月薪5千以 上，开朗，不抽烟喝酒</p>
-									</li>
+									
 								</ul>
 								<div class="more_cons" id="more_cons2">查看更多 <span
 										class="mui-icon mui-icon-arrowdown"></span></div>
@@ -185,7 +134,7 @@
 									<h4>内心独白</h4>
 								</div>
 								<div class="diz_ul" id="diz_ul2">
-									<p>不抽烟喝酒，喜欢旅游</p>
+									
 								</div>
 
 								<div class="more_cons" id="more_cons3">VIP会员免费查看以下信息 <span
@@ -198,8 +147,7 @@
 									<h4>其他图片</h4>
 								</div>
 								<div class="diz_ul" id="diz_ul3">
-									<img src="{{ url_for('static', filename='images/4.png') }}" />
-									<img src="{{ url_for('static', filename='images/4.png') }}" />
+									
 								</div>
 
 								<div class="more_cons" id="more_cons4">VIP会员免费查看以下信息 <span
@@ -259,11 +207,28 @@
 					var xinxis = '<img src="{{ url_for("static", filename="images/03288.png") }}"><span>' + datas[0].age + '岁</span><span>' + datas[0].education + '</span><span>' + datas[0].stature + 'cm</span><span>' + datas[0].weight + '公斤</span>'
 				}
 				$('.xinxis').html(xinxis)
-				var diz_ul = '<li><label>来自地区</label><p>'+datas[0].census+'</p></li><li><label>工资月薪</label><p>'+datas[0].monthly+'元</p></li>'+
+				var diz_uls = '<li><label>来自地区</label><p>'+datas[0].census+'</p></li><li><label>工资月薪</label><p>'+datas[0].monthly+'元</p></li>'+
 				'<li><label>毕业院校</label><p>'+datas[0].school+'</p></li><li><label>学历</label><p>'+datas[0].education+'</p></li>'+
 				'<li><label>工作单位</label><p>'+datas[0].workunit+'</p></li><li><label>职业</label><p>'+datas[0].occupation+'</p></li>'+
 				'<li><label>职业性质</label><p>'+datas[0].profession+'</p></li>'
-				$("#diz_uls").html(diz_ul)
+				$("#diz_uls").html(diz_uls);
+				var diz_ul = '<li><label>住房情况</label><p>'+datas[1].housing+'</p></li><li><label>婚恋情况</label><p>'+datas[1].marriage+'</p></li><li><label>家庭主要成员</label><p>'+datas[0].member+'</p></li>'
+				$("#diz_ul").html(diz_ul);
+				var diz_ul1 = '<li><label>婚史要求</label><p>'+datas[1].marriage+'</p></li><li><label>年龄要求</label><p>'+datas[1].age+'岁</p></li>'+
+				'<li><label>最低身高要求</label><p>'+datas[1].stature+'</p></li><li><label>体重要求</label><p>'+datas[1].weight+'kg</p></li>'+
+				'<li><label>月薪范围</label><p>'+datas[1].monthly+'</p></li><li><label>住房要求</label><p>'+datas[1].housing+'</p></li>'+
+				'<li><label>车辆要求</label><p>'+datas[1].vehicle+'</p></li><li><label>地区要求</label><p>'+datas[1].census+'</p></li>'+
+				'<li><label>有无子女要求</label><p>'+datas[1].children+'</p></li><li><label>其他要求</label><p>'+datas[1].rests+'</p></li>'
+				$("#diz_ul1").html(diz_ul1);
+				
+				// 内心独白
+				var diz_ul2 = '<p>'+datas[0].rest+'<p>';
+				$("#diz_ul2").html(diz_ul2)
+				// 其他图片
+				var sts = datas[0].images;
+				var stst = eval("("+sts+")")
+				var diz_ul3 = '<img class="e" src="'+stst+'">';
+				$("#diz_ul3").html(diz_ul3)
 			},
 			error: function () {
 				console.log("网络错误")

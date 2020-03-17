@@ -79,8 +79,8 @@ def index(userid=None):
         setattr(mess, "userinfo", userinfo)
         mess._fields.append("userinfo")
         result.append(mess.__dict__)
-    return render_template("index.html", result=result)
 
+    return render_template("index.html", result=result)
 
 @wechat.route("/integral/<userid>", methods=[ "GET"])
 @wechat.route("/integral", methods=['GET'])
@@ -244,7 +244,8 @@ def personal_details(userid=None):
 @wechat.route("/recharge/<userid>", methods=["GET"])
 @wechat.route("/recharge", methods=["GET"])
 def recharge(userid=None):
-    return render_template("recharge.html")
+
+    return render_template("recharge.html", **get_jsapi_params("oB2YTuAUMHUAGZLPRPI_kfMbV5sg"))
 
 
 @wechat.route("/recharge_vip/<userid>", methods=["GET"])
@@ -273,8 +274,6 @@ def search_result(userid=None):
 def see_qq(userid=None):
 
     return render_template("see_qq.html")
-
-
 
 
 @wechat.route("/messinfo/<userid>", methods=["POST", "GET"])
