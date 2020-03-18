@@ -266,7 +266,7 @@ def search_criteria(userid=None):
 @wechat.route("/search_result/<userid>", methods=["GET"])
 @wechat.route("/search_result", methods=["GET"])
 def search_result(userid=None):
-    return render_template("search_result.html", userid)
+    return render_template("search_result.html", userid=userid)
 
 
 @wechat.route("/see_qq/<userid>", methods=["POST", "GET"])
