@@ -75,6 +75,15 @@ class Love_message(Base):
     rest = Column("rest", String(500), comment="其他要求")
 
 
+class Love_commodity(Base):
+
+    __tablename__ = "love_commodity"
+    id = Column("id", Integer, primary_key=True, autoincrement=True, comment="商品id")
+    name = Column("name", String(60), comment="商品名称")
+    monthly = Column("monthly", Float, comment="商品价格")
+    comment = Column("comment", String(200), comment="商品描述")
+
+
 class Love_selection(Base):
 
     __tablename__ = 'love_selection'

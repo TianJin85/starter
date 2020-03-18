@@ -155,7 +155,6 @@ class Message(Love_message):
         age = int((local - datetime(int(year), int(month), int(day))).days / 365)
         messinfo["age"] = age
         sex = None
-        print(cardid)
         if int(cardid[14:18]) % 2 == 0:  # 偶数为女
             sex = "女"
         else:

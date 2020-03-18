@@ -9,15 +9,19 @@
 import base64
 import json
 import os
+from datetime import datetime
 
 import requests
+from lin.exception import Success, Failed, UnknownException
 from lin.redprint import Redprint
 
 from flask import render_template, redirect, request, jsonify, url_for, Response
 
-from app.config.pya_setting import get_jsapi_params
+from app.api.front.serve import codes
+from app.config.pya_setting import get_jsapi_params, get_openid
 from app.config.secure import WxAppidSecretSecure
 from app.controller.save import Save
+from app.controller.treating import enroll_data
 from app.models.message import Message
 from app.models.selection import Selection
 from app.models.user import User
@@ -107,67 +111,39 @@ def activity_details(userid=None):
 @wechat.route("/consumption/<userid>", methods=["POST", "GET"])
 @wechat.route("/consumption", methods=["GET"])
 def consumption(userid):
+
     return render_template("consumption.html")
 
-
-@wechat.route("/get_code", methods=["GET"])
-def get_code():
-
-    return ""
 
 @wechat.route("/enroll/<userid>", methods=["POST", "GET"])
 @wechat.route("/enroll", methods=["POST", "GET"])
 def enroll(userid=None):
-    print(request.form)
+
     form = MessageForm(request.form)
 
     if request.method == "POST":
+        print(request.form.to_dict())
         if form.validate():
             try:
                 result = request.form.to_dict()
-                imgpath = Save(result=result).get_data()        # 保存图片获取地址
-                cardidinfo = Message.set_cardid(result["cardid"])
-                mess_data = {
-                    "uid": result["userid"],
-                    "username": result["username"],
-                    "census": result["census"],
-                    "cardid": result["cardid"],
-                    "stature": result["stature"],
-                    "weight": result["weight"],
-                    "wechat": result["wechat"],
-                    "qq": result["qq"],
-                    "school": result["school"],
-                    "education": result["education"],
-                    "workunit": result["workunit"],
-                    "occupation": result["occupation"],
-                    "profession": result["profession"],
-                    "monthly": result["monthly"],
-                    "member": result["member"],
-                    "housing": result["housing"],
-                    "rest": result["rest"],
-                    "vehicle": result["vehicle"],
-                    "marriage": result["marriage"],
-                    "phone": result["phone"],
-                    "images": imgpath,
-                    "sex": cardidinfo["sex"],
-                    "age": cardidinfo["age"]
-                }
+                uid = result["userid"]
+                code = str(result["code"])
 
-                Message.add_message(**mess_data)
-                mess_id = Message.get_messid(uid=result["userid"])
-                select_data = {"mid": mess_id,
-                        "marriage": result["marriage"],
-                        "age": result["age"],
-                        "stature": result["ze_stature"],
-                        "weight": result["ze_weight"],
-                        "monthly": result["ze_monthly"],
-                        "housing": result["ze_housing"],
-                        "vehicle": result["ze_vehicle"],
-                        "children": result["ze_housing"],
-                        "census": result["ze_census"],
-                        "pests": result["ze_pests"]}
-                Selection.add_selection(**select_data)
-                return jsonify({"data": "数据提交成功", "status": 200})
+                if code == codes[uid]["code"]["code"]:
+                    minute = (datetime.now() - codes[uid]["code"]["date"]).seconds / 60
+                    codes.pop(uid, "")      # 删除验证码
+                    if minute > 5:
+
+                        imgpath = Save(result=result).get_data()        # 保存图片获取地址
+                        try:
+                            cardidinfo = Message.set_cardid(result["cardid"])
+                            enroll_data(result, imgpath, cardidinfo)
+                            return Success(msg="报名成功")
+                        except:
+                            return UnknownException(msg="请检查身份证是否输入正确")
+                    else:
+                        Success(msg="验证码已过期")
+                return Success(msg="验证码不正确")
             except os.error as e:
                 return jsonify({"errors": e, "status": 500})
         else:
@@ -230,6 +206,7 @@ def order_details(userid=None):
 @wechat.route("/personal/<userid>", methods=["GET"])
 @wechat.route("/personal", methods=["GET"])
 def personal(userid=None):
+
     mess_data =Message.get_message(userid)
     mess_data["userid"] = userid
     return render_template("personal.html", mess_data=mess_data)
@@ -244,8 +221,13 @@ def personal_details(userid=None):
 @wechat.route("/recharge/<userid>", methods=["GET"])
 @wechat.route("/recharge", methods=["GET"])
 def recharge(userid=None):
-
-    return render_template("recharge.html", **get_jsapi_params("oB2YTuAUMHUAGZLPRPI_kfMbV5sg"))
+    if request.method == "POST":
+        if userid:
+            openid = User.get_openid(userid)
+            result = get_jsapi_params(openid)
+            result["userid"] = userid
+        return render_template("recharge.html", **result)
+    return render_template("recharge.html", userid=userid)
 
 
 @wechat.route("/recharge_vip/<userid>", methods=["GET"])
@@ -257,7 +239,7 @@ def recharge_vip(userid=None):
 @wechat.route("/search_criteria/<userid>", methods=["GET"])
 @wechat.route("/search_criteria", methods=["GET"])
 def search_criteria(userid=None):
-
+    print("fsaf")
 
 
     return render_template("search_criteria.html")

@@ -59,8 +59,8 @@
 			<div class="pers_box">
 				<div class="pers_name">
 					<div class="names">
-						<h5 id="name_times">刘大姐 <img src="{{ url_for('static', filename='images/4334.png') }}"></h5>
-						<span id="name_id">00001</span>
+						<h5 id="name_times"></h5>
+						<span id="name_id"></span>
 					</div>
 					<div class="xinxis">
 						
@@ -298,6 +298,7 @@
 		 */
 		$(function () {
 			$("#praise").click(function () {
+				console.log(34)
 				var praise_img = $("#praise-img");
 				if (praise_img.attr("src") == ("{{ url_for('static', filename='images/sc1.png') }}")) {
 					$(this).html("<img src='{{ url_for('static', filename='images/sc.png') }}' id='praise-img' class='animation' />");

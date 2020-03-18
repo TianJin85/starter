@@ -19,7 +19,7 @@ MCH_ID = "1574913571" # 商户号
 API_KEY = "zxcvbnmlkjhgfds123456789012345qw" # 微信商户平台(pay.weixin.qq.com) -->账户设置 -->API安全 -->密钥设置，设置完成后把密钥复制到这里
 APP_SECRECT = wx.secret
 UFDODER_URL = "https://api.mch.weixin.qq.com/pay/unifiedorder"  # url是微信下单api
-NOTIFY_URL = "http://www.anshun520.com/view/wechat/personal"   # 微信支付结果回调接口,需要你自定义
+NOTIFY_URL = "http://www.anshun520.com/view/wechat/personal/"   # 微信支付结果回调接口,需要你自定义
 CREATE_IP = '211.149.250.67' # 你服务器上的ip
 # 生成随机字符串
 

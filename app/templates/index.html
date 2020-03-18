@@ -87,13 +87,13 @@
 		<div class="danhand">
 			<ul class="danhand_ul">
 				<li>
-					<div  href="/view/wechat/search_result">
+					<a href="/view/wechat/search_result?sex=男" >
 						<img src="{{ url_for('static', filename='images/4331.png') }}" />
 						<p>男生</p>
-					</div>
+					</a>
 				</li>
 				<li>
-					<a href="#"><img src="{{ url_for('static', filename='images/4332.png') }}" />
+					<a href="/view/wechat/search_result?sex=女"><img src="{{ url_for('static', filename='images/4332.png') }}" />
 						<p>女生</p>
 					</a>
 				</li>
@@ -119,8 +119,7 @@
 			<ul class="lists_ul">
 				{% for item in result %}
 				<li>
-					<div onclick="openDetail({{item['id']}})"
-						href="{{ url_for('view.wechat+personal_details', userid=item["id"]) }}">
+					<div onclick="openDetail({{item['id']}})">
 						<div class="rens">
 							<div class="rens_img"><img src="{{ item["images"] }}" /></div>
 							<div class="rens_text">
@@ -241,17 +240,7 @@
 			console.log(uid)
 			location.href = "/view/wechat/personal_details?uid=" + uid
 		}
-		$.ajax({
-			type: "get",
-			url: 'http://192.168.3.11:5000/front/wechat/search_sex?sex=女',
-			async: true,
-			dataType: 'json',
-			success: function (msg) {
-				console.log(msg)
-			}, error: function () {
-				console.log("网络错误")
-			}
-		})
+		
 	</script>
 
 </body>
