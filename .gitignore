@@ -8,3 +8,6 @@ __pycache__
 *.pyc
 *.cpython-36.pyc
 app/assets/*
+app/config/pya_setting.py
+app/config/secure.py
+venv/*

@@ -1,189 +1,165 @@
 <!doctype html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>搜索结果</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="{{ url_for('static', filename='css/mui.min.css') }}" rel="stylesheet" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>搜索结果</title>
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="{{ url_for('static', filename='css/mui.min.css') }}" rel="stylesheet" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
 
-	<body>
-		<header class="mui-bar mui-bar-nav navs">
-		    <a class="mui-action-back"><img src="{{ url_for('static', filename='images/4129.png') }}"/>返回</a>
-		    <h1 class="mui-title">条件搜索</h1>
-		</header>
-		<div class="mui-content">
-		    <div class="search_list">
-		    	<ul class="lists_ul">
-					<li>
-						<a href="#">
-							<div class="rens">
-								<div class="rens_img"><img src="{{ url_for('static', filename='images/3.png') }}" /></div>
-								<div class="rens_text">
-									<div class="names">
-										<h5>刘大姐 <span></span></h5>
-										<span>安顺</span>
-									</div>
-									<div class="xinxis">
-										<img src="" />
-										<span>30岁</span>
-										<span>本科</span>
-										<span>经理</span>
-										<span>163cm</span>
-										<span>5千~1万</span>
-									</div>
-									<div class="bianhao">
-										<div class="item">
-											<span class="label">编号</span>：
-											<span class="value value1">000001</span>
-										</div>
-										<div class="item">
-											<span class="label">职业性质</span>：
-											<span class="value">销售经理</span>
-										</div>
-									</div>
-									<div class="xiesg">
-										<p>有房</p>
-										<p>有车</p>
-										<p>狮子座</p>
-									</div>
-								</div>
-							</div>
-							<div class="jinalis">
-								<img src="" />
-								<p>我正在寻找安顺人，学历大专以上，月薪5千以上，开朗</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="rens">
-								<div class="rens_img"><img src="{{ url_for('static', filename='images/3.png') }}" /></div>
-								<div class="rens_text">
-									<div class="names">
-										<h5>刘大姐 <span></span></h5>
-										<span>安顺</span>
-									</div>
-									<div class="xinxis">
-										<img src="" />
-										<span>30岁</span>
-										<span>本科</span>
-										<span>经理</span>
-										<span>163cm</span>
-										<span>5千~1万</span>
-									</div>
-									<div class="bianhao">
-										<div class="item">
-											<span class="label">编号</span>：
-											<span class="value value1">000001</span>
-										</div>
-										<div class="item">
-											<span class="label">职业性质</span>：
-											<span class="value">销售经理</span>
-										</div>
-									</div>
-									<div class="xiesg">
-										<p>有房</p>
-										<p>有车</p>
-										<p>狮子座</p>
-									</div>
-								</div>
-							</div>
-							<div class="jinalis">
-								<img src="" />
-								<p>我正在寻找安顺人，学历大专以上，月薪5千以上，开朗</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="rens">
-								<div class="rens_img"><img src="{{ url_for('static', filename='images/3.png') }}" /></div>
-								<div class="rens_text">
-									<div class="names">
-										<h5>刘大姐 <span></span></h5>
-										<span>安顺</span>
-									</div>
-									<div class="xinxis">
-										<img src="" />
-										<span>30岁</span>
-										<span>本科</span>
-										<span>经理</span>
-										<span>163cm</span>
-										<span>5千~1万</span>
-									</div>
-									<div class="bianhao">
-										<div class="item">
-											<span class="label">编号</span>：
-											<span class="value value1">000001</span>
-										</div>
-										<div class="item">
-											<span class="label">职业性质</span>：
-											<span class="value">销售经理</span>
-										</div>
-									</div>
-									<div class="xiesg">
-										<p>有房</p>
-										<p>有车</p>
-										<p>狮子座</p>
-									</div>
-								</div>
-							</div>
-							<div class="jinalis">
-								<img src="" />
-								<p>我正在寻找安顺人，学历大专以上，月薪5千以上，开朗</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="rens">
-								<div class="rens_img"><img src="{{ url_for('static', filename='images/3.png') }}" /></div>
-								<div class="rens_text">
-									<div class="names">
-										<h5>刘大姐 <span></span></h5>
-										<span>安顺</span>
-									</div>
-									<div class="xinxis">
-										<img src="" />
-										<span>30岁</span>
-										<span>本科</span>
-										<span>经理</span>
-										<span>163cm</span>
-										<span>5千~1万</span>
-									</div>
-									<div class="bianhao">
-										<div class="item">
-											<span class="label">编号</span>：
-											<span class="value value1">000001</span>
-										</div>
-										<div class="item">
-											<span class="label">职业性质</span>：
-											<span class="value">销售经理</span>
-										</div>
-									</div>
-									<div class="xiesg">
-										<p>有房</p>
-										<p>有车</p>
-										<p>狮子座</p>
-									</div>
-								</div>
-							</div>
-							<div class="jinalis">
-								<img src="" />
-								<p>我正在寻找安顺人，学历大专以上，月薪5千以上，开朗</p>
-							</div>
-						</a>
-					</li>
-				</ul>
-		    </div>
+<body>
+	<header class="mui-bar mui-bar-nav navs">
+		<a class="mui-action-back"><img src="{{ url_for('static', filename='images/4129.png') }}" />返回</a>
+		<h1 class="mui-title">条件搜索</h1>
+	</header>
+	<div class="mui-content">
+		<div class="search_list">
+			<ul class="lists_ul">
+				
+			</ul>
 		</div>
-		<script src="{{ url_for('static', filename='js/mui.min.js') }}"></script>
-		<script type="text/javascript">
-			mui.init()
-		</script>
-	</body>
+	</div>
+	<script src="{{ url_for('static', filename='js/mui.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script type="text/javascript">
+		mui.init()
+		getRequest()
+		function getRequest() {
+			var url = window.location.search; //获取url中"?"符后的字串   
+			var theRequest = new Object();
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("&");
+				for (var i = 0; i < strs.length; i++) {
+					//就是这句的问题
+					theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+					//之前用了unescape()
+					//才会出现乱码  
+				}
+			}
+			var ste = theRequest.sex
+			var s1 = "女"
+			var s2 = ste
+			if (s1 == s2) {
+				console.log("女")
+				$.ajax({
+					type: "get",
+					url: '{{url_for("front.wechat+search_sex", sex="女")}}',
+					async: true,
+					dataType: 'json',
+					success: function (msg) {
+						console.log(msg)
+						var list_uls = ''
+						for (var i = 0; i < msg.length; i++) {
+							list_uls += '<li>' +
+								'<a href="/view/wechat/personal_details?uid='+msg[i][0].id+'">' +
+								'<div class="rens">' +
+								'<div class="rens_img"><img src="'+eval("("+msg[i][0].images+")")+'"></div>' +
+								'<div class="rens_text">' +
+								'<div class="names">' +
+								'<h5>'+msg[i][0].username+' <span></span></h5>' +
+								'<span>'+msg[i][0].census+'</span>' +
+								'</div>' +
+								'<div class="xinxis">' +
+								'<img src="/static/images/3288.png">' +
+								'<span>'+msg[i][0].age+'岁</span>' +
+								'<span>'+msg[i][0].education+'</span>' +
+								'<span>'+msg[i][0].stature+'cm</span>' +
+								'<span>'+msg[i][0].monthly+'元</span>' +
+								'</div>' +
+								'<div class="bianhao">' +
+								'<div class="item">' +
+								'<span class="label">编号</span>：' +
+								'<span class="value value1">'+msg[i][0].id+'</span>' +
+								'</div>' +
+								'<div class="item">' +
+								'<span class="label">职业性质</span>：' +
+								'<span class="value">'+msg[i][0].profession+'</span>' +
+								'</div>' +
+								'</div>' +
+								'<div class="xiesg">' +
+								'<p>'+msg[i][0].housing+'房</p>' +
+								'<p>'+msg[i][0].vehicle+'车</p>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'<div class="jinalis">' +
+								'<img src="/static/images/anger.png">' +
+								'<p>'+msg[i][0].rest+'</p>' +
+								'</div>' +
+								'</a>' +
+								'</li>'
+						}
+						$(".lists_ul").html(list_uls)
+					}, error: function () {
+						console.log("网络错误")
+					}
+				})
+			} else {
+				console.log("男")
+				$.ajax({
+					type: "get",
+					url: '{{url_for("front.wechat+search_sex", sex="男")}}',
+					async: true,
+					dataType: 'json',
+					success: function (msg) {
+						console.log(msg)
+						var list_uls = ''
+						for (var i = 0; i < msg.length; i++) {
+							list_uls += '<li>' +
+								'<a href="/view/wechat/personal_details?uid='+msg[i][0].uid+'">' +
+								'<div class="rens">' +
+								'<div class="rens_img"><img src="'+eval("("+msg[i][0].images+")")+'"></div>' +
+								'<div class="rens_text">' +
+								'<div class="names">' +
+								'<h5>'+msg[i][0].username+' <span></span></h5>' +
+								'<span>'+msg[i][0].census+'</span>' +
+								'</div>' +
+								'<div class="xinxis">' +
+								'<img src="/static/images/03288.png">' +
+								'<span>'+msg[i][0].age+'岁</span>' +
+								'<span>'+msg[i][0].education+'</span>' +
+								'<span>'+msg[i][0].stature+'cm</span>' +
+								'<span>'+msg[i][0].monthly+'元</span>' +
+								'</div>' +
+								'<div class="bianhao">' +
+								'<div class="item">' +
+								'<span class="label">编号</span>：' +
+								'<span class="value value1">'+msg[i][0].id+'</span>' +
+								'</div>' +
+								'<div class="item">' +
+								'<span class="label">职业性质</span>：' +
+								'<span class="value">'+msg[i][0].profession+'</span>' +
+								'</div>' +
+								'</div>' +
+								'<div class="xiesg">' +
+								'<p>'+msg[i][0].housing+'房</p>' +
+								'<p>'+msg[i][0].vehicle+'车</p>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'<div class="jinalis">' +
+								'<img src="/static/images/anger.png">' +
+								'<p>'+msg[i][0].rest+'</p>' +
+								'</div>' +
+								'</a>' +
+								'</li>'
+						}
+						$(".lists_ul").html(list_uls)
+					}, error: function () {
+						console.log("网络错误")
+					}
+				})
+			}
+
+			return theRequest;
+		}
+
+	</script>
+
+</body>
 
 </html>

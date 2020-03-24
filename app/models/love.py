@@ -25,7 +25,6 @@ class Love_user(Base):
 
     __tablename__ = "love_user"
     id = Column("id", Integer, primary_key=True, autoincrement=True, comment="用户id")
-    ctivity_id = Column("ctivity_id", String(120), comment="参与活动id")
     nickname = Column("nickname", String(32), comment="用户名称")
     openid = Column("openid", String(62), comment="用户标识", unique=True)
     unionid = Column("unionid", String(62), comment="接口凭证")
@@ -76,6 +75,15 @@ class Love_message(Base):
     rest = Column("rest", String(500), comment="其他要求")
 
 
+class Love_commodity(Base):
+
+    __tablename__ = "love_commodity"
+    id = Column("id", Integer, primary_key=True, autoincrement=True, comment="商品id")
+    name = Column("name", String(60), comment="商品名称")
+    monthly = Column("monthly", Float, comment="商品价格")
+    comment = Column("comment", String(200), comment="商品描述")
+
+
 class Love_selection(Base):
 
     __tablename__ = 'love_selection'
@@ -116,6 +124,7 @@ class Love_ctivity(Base):
 
     __tabelname__ = 'love_ctivity'
     id = Column("id", Integer, primary_key=True, autoincrement=True)
+    uid = Column("uid", String(300), comment="参与活动id")
     name = Column("name", String(62), nullable=False, comment="活动名称")
     address = Column("address", String(32), nullable=False, comment="活动地址")
     testarea = Column("testarea", String(20000), nullable=False, comment="活动简介")

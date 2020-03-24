@@ -34,21 +34,22 @@
 									<img src="{{ url_for('static', filename='images/wx.png') }}" /> 微信支付
 								</a>
 							</li>
-							<li class="mui-table-view-cell">
+							<!-- <li class="mui-table-view-cell">
 								<a class="mui-navigate-right">
 									<img src="{{ url_for('static', filename='images/ye.png')}}" /> 余额支付
 								</a>
-							</li>
+							</li> -->
 						</ul>
-						<div class=" zhifse" style="display: none;">
+						<!-- <div class=" zhifse" style="display: none;">
 							<img src="{{ url_for('static', filename='images/4153.png') }}" />
 							<p id="info">当前余额</p>
 							<p class="yuans">2000元</p>
-						</div>
+						</div> -->
 					</div>
 					<div class="kaitong">
 						<div class="subit">
-							<button type="submit">立即开通</button>
+<!--							<button type="button" onclick="javascript:callpay();return false;">立即开通</button>-->
+							<button class="btn" type="button" onclick="javascript:callpay();return false;">立即支付</button>
 						</div>
 					</div>
 				</form>
@@ -70,6 +71,52 @@
 				$(this).addClass("active").siblings().removeClass("active")
 			})
 		</script>
+
+		<script type="text/javascript">
+		  //调用微信JS api 支付
+		  function onBridgeReady() {
+			WeixinJSBridge.invoke(
+			  'getBrandWCPayRequest',
+			  {
+				appId: "{{ appid }}",    //公众号名称，由商户传入
+				timeStamp: "{{ timeStamp }}", //时间戳，自1970年以来的秒数
+				nonceStr: "{{ nonceStr }}", //随机串
+				package: "prepay_id={{ prepay_id }}", //预支付id
+				signType: "MD5", //微信签名方式
+				paySign: "{{ sign }}"   //微信签名
+			  },
+			  function (res) {
+				//支付成功后返回 get_brand_wcpay_request:ok
+				if (res.err_msg == "get_brand_wcpay_request:ok") {
+				  // 跳转到支付成功的页面
+				  window.location.href = '#';
+				  {#alert('支付成功');#}
+				} else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+				  alert("您已取消支付!");
+				  {#alert({{ machine_code }});#}
+				  {#window.location.href = '';#}
+				} else if (res.err_msg == "get_brand_wcpay_request:fail") {
+				  $.each(res, function(key,value){
+					alert(value);
+					});
+				  alert("支付失败!");
+				}
+			  }
+			);
+		  }
+		  function callpay() {
+			if (typeof WeixinJSBridge == "undefined") {
+			  if (document.addEventListener) {
+				document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+			  } else if (document.attachEvent) {
+				document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+				document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+			  }
+			} else {
+			  onBridgeReady();
+			}
+		  }
+</script>
 	</body>
 
 </html>

@@ -28,3 +28,5 @@ redis
 uwsgi
 aliyun-python-sdk-ecs
 websocket-server
+beautifulsoup4
+lxml

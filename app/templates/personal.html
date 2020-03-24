@@ -55,7 +55,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="{{ url_for('view.wechat+recharge') }}">
+								<a href="{{ url_for('view.wechat+recharge', userid=mess_data.userid) }}">
 									<img src="{{ url_for('static', filename='images/4305.png') }}" />
 									<p>我的余额</p>
 									<p class="qiand">￥150.00</p>

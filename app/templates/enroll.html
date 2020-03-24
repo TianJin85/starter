@@ -407,10 +407,10 @@
 						<div class="mui-input-row div_list">
 							<label>短信验证</label>
 							<div class="xiansd xiansdss yuanzen">
-								<input type="text" placeholder="请输入验证码" />
+								<input type="text" id="code" placeholder="请输入验证码" />
 							</div>
 							<div class="xuanshu xuanshu1">
-								<button type="button">发送验证码</button>
+								<button type="button" id="">发送验证码</button>
 							</div>
 						</div>
 					</div>
@@ -695,10 +695,12 @@
                 var images_src1 = $("#"+images_id[0]).attr("src")
                 var images_src2 = $("#"+images_id[1]).attr("src")
                 var images_src3 = $("#"+images_id[2]).attr("src")
+				var code = $("#code").val()
 
 
                 $.post('{{ url_for('view.wechat+enroll') }}',
-                    {   userid:userid,
+                    {   code:code,
+                    	userid:userid,
                         username:username,
                         census:census,
                         cardid:cardid,

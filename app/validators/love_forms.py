@@ -17,11 +17,11 @@ class MessageForm(Form):
     username = StringField("用户姓名", validators=[DataRequired(message="用户名不能为空")])
     phone = StringField("电话号码", validators=[
         DataRequired("电话号码不能为空"),
-        Regexp(r'[0-9]{11}', message="电话号码必须是11位0-9组成的数字")
+        Regexp(r'^1[35678]\d{9}', message="电话号码必须是11位0-9组成的有效数字")
     ])
     cardid = StringField("身份证号码", validators=[
         DataRequired("身份证不能为空"),
-        Regexp(r'[0-9]{18}', message="身份证号码必须是18位0-9组成的数字")
+        Regexp(r'^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$', message="身份证号码必须是18位0-9组成的有效数字数字")
     ])
     wechat = StringField("微信号", validators=[DataRequired(message="微信号不能为空")])
     qq = StringField("QQ号", validators=[DataRequired(message="QQ号不能为空")])

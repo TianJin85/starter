@@ -168,6 +168,11 @@ class User(Love_user):
 
     @classmethod
     def my_collect(cls, id):
+        """
+        我的收藏
+        :param id:
+        :return:
+        """
         user = Love_user.query.filter_by(openid=id).first()
 
         if user:
@@ -176,4 +181,17 @@ class User(Love_user):
             return None
 
 
+    @classmethod
+    def get_openid(cls, id):
+        """
+        获取opneid
+        :param id:
+        :return:
+        """
+        user = Love_user.query.filter_by(id=id).first()
+
+        if user:
+            return user.openid
+        else:
+            return None
 

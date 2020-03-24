@@ -15,4 +15,6 @@ def create_front():
     wechat.front.register(bp_v1)
     from .personal import pers_api
     pers_api.register(bp_v1)
+    from .serve import server_api
+    server_api.register(bp_v1)
     return bp_v1

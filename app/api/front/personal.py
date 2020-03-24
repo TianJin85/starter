@@ -114,6 +114,7 @@ def my_collect():
     else:
         return Success()
 
+
 @pers_api.route("/search_criteria", methods=["GET"])
 def search_criteria():
     data = request.args.to_dict()

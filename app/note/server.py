@@ -8,8 +8,8 @@ from aliyunsdkcore.request import CommonRequest
 
 class NoetServer:
 
-    def __init__(self, phone):
-        self.code_dict = self.random_code()
+    def __init__(self, phone, code_dict):
+        self.code_dict = code_dict
         self.phone = phone
 
     def send_code(self):
@@ -33,7 +33,8 @@ class NoetServer:
         # python2:  print(response)
         return str(response, encoding='utf-8')
 
-    def random_code(self):
+    @classmethod
+    def random_code(cls):
         """
         产生四位数的随机验证码
         :return:
@@ -47,9 +48,9 @@ class NoetServer:
         code_dict = {"code": ''.join(code)}
         return code_dict
 
-
-if __name__ == '__main__':
-    noet = NoetServer("15908560480")
-
-
-    print(noet.send_code(), noet.code_dict)
+#
+# if __name__ == '__main__':
+#     noet = NoetServer("15908560480")
+#
+#
+#     print(noet.send_code(), noet.code_dict)
