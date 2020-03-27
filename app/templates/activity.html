@@ -1,152 +1,210 @@
 <!doctype html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>活动</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="{{ url_for('static', filename='css/mui.min.css') }}" rel="stylesheet" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>活动</title>
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="{{ url_for('static', filename='css/mui.min.css') }}" rel="stylesheet" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
 
-	<body>
-		<header class="mui-bar mui-bar-nav navs">
+<body>
+	<header class="mui-bar mui-bar-nav navs">
 
-			<a class="mui-action-back"><img src="{{ url_for('static', filename='images/4129.png') }}"/>返回</a>
-			<h1 class="mui-title">活动</h1>
-		</header>
-		<div class="mui-content">
-			<div class="order">
-				<div class="sliders">
-					<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted sliders_list">
-						<a class="mui-control-item mui-active" href="#item1">全部</a>
-						<a class="mui-control-item" href="#item2">报名中</a>
-						<a class="mui-control-item" href="#item3">已报名</a>
-						<a class="mui-control-item" href="#item4">已结束</a>
+		<a class="mui-action-back"><img src="{{ url_for('static', filename='images/4129.png') }}" />返回</a>
+		<h1 class="mui-title">活动</h1>
+	</header>
+	<div class="mui-content">
+		<div class="order">
+			<div class="sliders">
+				<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted sliders_list">
+					<a class="mui-control-item mui-active" href="#item1">全部</a>
+					<a class="mui-control-item" href="#item2">报名中</a>
+					<a class="mui-control-item" href="#item3">已报名</a>
+					<a class="mui-control-item" href="#item4">已结束</a>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<div class="activi_list">
+							<ul class="activi_ul" id="activi_ul1">
+								
+							</ul>
+						</div>
 					</div>
-					<div class="mui-slider-group">
-						<div id="item1" class="mui-slider-item mui-control-content mui-active">
-							<div class="activi_list">
-								<ul class="activi_ul">
-									<li>
-										<a href="{{ url_for('view.wechat+activity_details', userid=userid) }}">
-											<img src="{{ url_for('static', filename='images/2.png') }}" />
-											<h4>某某某活动名称活动名称活动某某某活动名称活动名称 活动某某某活动名称活动名称活动</h4>
-											<div class="vip_div">
-												<button class="jiage">￥48.00</button>
-												<button class="mvip">vip免费</button>
-												<p>活动时间:2020-02-08</p>
-											</div>
-											<div class="boams">
-												<p>已报名:<span>27/30</span></p>
-												<button class="sup">报名(剩余1天)</button>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="{{ url_for('static', filename='images/2.png') }}" />
-											<h4>某某某活动名称活动名称活动某某某活动名称活动名称 活动某某某活动名称活动名称活动</h4>
-											<div class="vip_div">
-												<button class="jiage">￥48.00</button>
-												<button class="mvip">vip免费</button>
-												<p>活动时间:2020-02-08</p>
-											</div>
-											<div class="boams">
-												<p>已报名:<span>27/30</span></p>
-												<button class="sup1">已报名</button>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="{{ url_for('static', filename='images/2.png') }}" />
-											<h4>某某某活动名称活动名称活动某某某活动名称活动名称 活动某某某活动名称活动名称活动</h4>
-											<div class="vip_div">
-												<button class="jiage">￥48.00</button>
-												<button class="mvip">vip免费</button>
-												<p>活动时间:2020-02-08</p>
-											</div>
-											<div class="boams">
-												<p>已报名:<span>27/30</span></p>
-												<button class="sup2">已结束</button>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
+					<div id="item2" class="mui-slider-item mui-control-content">
+						<div class="activi_list">
+							<ul class="activi_ul" id="activi_ul2">
+								
+							</ul>
 						</div>
-						<div id="item2" class="mui-slider-item mui-control-content">
-							<div class="activi_list">
-								<ul class="activi_ul">
-									<li>
-										<a href="#">
-											<img src="{{ url_for('static', filename='images/2.png') }}" />
-											<h4>某某某活动名称活动名称活动某某某活动名称活动名称 活动某某某活动名称活动名称活动</h4>
-											<div class="vip_div">
-												<button class="jiage">￥48.00</button>
-												<button class="mvip">vip免费</button>
-												<p>活动时间:2020-02-08</p>
-											</div>
-											<div class="boams">
-												<p>已报名:<span>27/30</span></p>
-												<button class="sup">报名(剩余1天)</button>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
+					</div>
+					<div id="item3" class="mui-slider-item mui-control-content">
+						<div class="activi_list">
+							<ul class="activi_ul" id="activi_ul3">
+								
+							</ul>
 						</div>
-						<div id="item3" class="mui-slider-item mui-control-content">
-							<div class="activi_list">
-								<ul class="activi_ul">
-									<li>
-										<a href="#">
-											<img src="{{ url_for('static', filename='images/2.png') }}" />
-											<h4>某某某活动名称活动名称活动某某某活动名称活动名称 活动某某某活动名称活动名称活动</h4>
-											<div class="vip_div">
-												<button class="jiage">￥48.00</button>
-												<button class="mvip">vip免费</button>
-												<p>活动时间:2020-02-08</p>
-											</div>
-											<div class="boams">
-												<p>已报名:<span>27/30</span></p>
-												<button class="sup1">已报名</button>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div id="item4" class="mui-slider-item mui-control-content">
-							<div class="activi_list">
-								<ul class="activi_ul">
-									<li>
-										<a href="#">
-											<img src="{{ url_for('static', filename='images/2.png') }}" />
-											<h4>某某某活动名称活动名称活动某某某活动名称活动名称 活动某某某活动名称活动名称活动</h4>
-											<div class="vip_div">
-												<button class="jiage">￥48.00</button>
-												<button class="mvip">vip免费</button>
-												<p>活动时间:2020-02-08</p>
-											</div>
-											<div class="boams">
-												<p>已报名:<span>27/30</span></p>
-												<button class="sup2">已结束</button>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
+					</div>
+					<div id="item4" class="mui-slider-item mui-control-content">
+						<div class="activi_list">
+							<ul class="activi_ul" id="activi_ul4">
+								
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script src="{{ url_for('static', filename='js/mui.min.js') }}"></script>
-		<script type="text/javascript">
-			mui.init()
-		</script>
-	</body>
+	</div>
+	<script src="{{ url_for('static', filename='js/mui.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
+	<script>
+		$.ajax({
+			type: "get",
+			url: '{{url_for("front.wechat+activity")}}',
+			async: true,
+			data: {
+				'id': getQueryVariable('userid')
+			},
+			dataType: 'json',
+			success: function (msg) {
+				console.log(msg)
+				var datas = msg;
+				var activety_list = '';
+				var activety_list2 = '';
+				var activety_list3 = '';
+				var activety_list4 = '';
+				for (var i = 0; i < datas.length; i++) {
+					if (datas[i].expire >0) {
+						activety_list += '<li>' +
+							'<a href="/view/wechat/activity_details/1">' +
+							'	<img src="/static/'+datas[i].images+'">' +
+							'<h4>'+datas[i].message+'</h4>' +
+							'<div class="vip_div">' +
+							'<button class="jiage">￥'+datas[i].money+'</button>' +
+							'<button class="mvip">vip免费</button>' +
+							'<p>活动时间:2020-02-08</p>' +
+							'</div>' +
+							'<div class="boams">' +
+							'<p>已报名:<span>'+datas[i].num+'</span></p>' +
+							'<button class="sup">报名(剩余'+datas[i].expire+'天)</button>' +
+							'</div>' +
+							'</a>' +
+							'</li>'
+
+							activety_list2 += '<li>' +
+							'<a href="/view/wechat/activity_details/1">' +
+							'	<img src="/static/'+datas[i].images+'">' +
+							'<h4>'+datas[i].message+'</h4>' +
+							'<div class="vip_div">' +
+							'<button class="jiage">￥'+datas[i].money+'</button>' +
+							'<button class="mvip">vip免费</button>' +
+							'<p>活动时间:2020-02-08</p>' +
+							'</div>' +
+							'<div class="boams">' +
+							'<p>已报名:<span>'+datas[i].num+'</span></p>' +
+							'<button class="sup">报名(剩余'+datas[i].expire+'天)</button>' +
+							'</div>' +
+							'</a>' +
+							'</li>'
+					}else if(datas[i].apply ==true){
+						activety_list += '<li>' +
+							'<a href="/view/wechat/activity_details/1">' +
+								'	<img src="/static/'+datas[i].images+'">' +
+							'<h4>'+datas[i].message+'</h4>' +
+							'<div class="vip_div">' +
+							'<button class="jiage">￥'+datas[i].money+'</button>' +
+							'<button class="mvip">vip免费</button>' +
+							'<p>活动时间:2020-02-08</p>' +
+							'</div>' +
+							'<div class="boams">' +
+							'<p>已报名:<span>'+datas[i].num+'</span></p>' +
+							'<button class="sup1">已报名</button>' +
+							'</div>' +
+							'</a>' +
+							'</li>'
+
+							activety_list3 += '<li>' +
+							'<a href="/view/wechat/activity_details/1">' +
+								'	<img src="/static/'+datas[i].images+'">' +
+							'<h4>'+datas[i].message+'</h4>' +
+							'<div class="vip_div">' +
+							'<button class="jiage">￥'+datas[i].money+'</button>' +
+							'<button class="mvip">vip免费</button>' +
+							'<p>活动时间:2020-02-08</p>' +
+							'</div>' +
+							'<div class="boams">' +
+							'<p>已报名:<span>'+datas[i].num+'</span></p>' +
+							'<button class="sup1">已报名</button>' +
+							'</div>' +
+							'</a>' +
+							'</li>'
+					}else if(datas[i].expire <=0){
+						activety_list += '<li>' +
+							'<a href="/view/wechat/activity_details/1">' +
+								'	<img src="/static/'+datas[i].images+'">' +
+							'<h4>'+datas[i].message+'</h4>' +
+							'<div class="vip_div">' +
+							'<button class="jiage">￥'+datas[i].money+'</button>' +
+							'<button class="mvip">vip免费</button>' +
+							'<p>活动时间:2020-02-08</p>' +
+							'</div>' +
+							'<div class="boams">' +
+							'<p>已报名:<span>'+datas[i].num+'</span></p>' +
+							'<button class="sup2">已结束</button>' +
+							'</div>' +
+							'</a>' +
+							'</li>'
+
+							activety_list4 += '<li>' +
+							'<a href="/view/wechat/activity_details/1">' +
+								'	<img src="/static/'+datas[i].images+'">' +
+							'<h4>'+datas[i].message+'</h4>' +
+							'<div class="vip_div">' +
+							'<button class="jiage">￥'+datas[i].money+'</button>' +
+							'<button class="mvip">vip免费</button>' +
+							'<p>活动时间:2020-02-08</p>' +
+							'</div>' +
+							'<div class="boams">' +
+							'<p>已报名:<span>'+datas[i].num+'</span></p>' +
+							'<button class="sup2">已结束</button>' +
+							'</div>' +
+							'</a>' +
+							'</li>'
+					}
+
+				}
+				$("#activi_ul1").html(activety_list)
+				$("#activi_ul2").html(activety_list2)
+				$("#activi_ul3").html(activety_list3)
+				$("#activi_ul4").html(activety_list4)
+			},
+			error: function () {
+				console.log("网络错误")
+			}
+		})
+		
+		function getQueryVariable(variable) {
+			
+			var query = window.location.search.substring(1);
+			
+			var vars = query.split("&");
+			console.log(window.location.search)
+			for (var i = 0; i < vars.length; i++) {
+				var pair = vars[i].split("=");
+				if (pair[0] == variable) {
+					return pair[1];
+				}
+			}
+			
+			return (false);
+		}
+	</script>
+</body>
 
 </html>

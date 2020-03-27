@@ -55,7 +55,7 @@
 						var list_uls = ''
 						for (var i = 0; i < msg.length; i++) {
 							list_uls += '<li>' +
-								'<a href="/view/wechat/personal_details?uid='+msg[i][0].id+'">' +
+								'<a href="/view/wechat/personal_details/?uid='+msg[i][0].uid+'">' +
 								'<div class="rens">' +
 								'<div class="rens_img"><img src="'+eval("("+msg[i][0].images+")")+'"></div>' +
 								'<div class="rens_text">' +
@@ -110,7 +110,7 @@
 						var list_uls = ''
 						for (var i = 0; i < msg.length; i++) {
 							list_uls += '<li>' +
-								'<a href="/view/wechat/personal_details?uid='+msg[i][0].uid+'">' +
+								'<a href="/view/wechat/personal_details/?uid='+msg[i][0].uid+'">' +
 								'<div class="rens">' +
 								'<div class="rens_img"><img src="'+eval("("+msg[i][0].images+")")+'"></div>' +
 								'<div class="rens_text">' +

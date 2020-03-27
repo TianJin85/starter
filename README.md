@@ -29,3 +29,5 @@
 |查看过我电话的人|http://192.168.3.11:5000/front/personal/phone_list?id=7|GET|查看电话|用户id|
 |查看过我微信的人|http://192.168.3.11:5000/front/personal/wx_list?id=7|GET|查看微信|用户id|
 |查看过我QQ的人|http://192.168.3.11:5000/front/personal/qq_list?id=7|GET|查看QQ|用户id|
+
+

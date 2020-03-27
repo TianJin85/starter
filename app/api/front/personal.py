@@ -6,7 +6,7 @@
 @Email   : tianjincn@163.com
 @Software: PyCharm
 """
-from flask import request, jsonify
+from flask import request, jsonify, render_template
 from lin.exception import Success, ParameterException, UnknownException
 from lin.redprint import Redprint
 
@@ -17,16 +17,15 @@ from app.models.user import User
 pers_api = Redprint("personal")
 
 
-@pers_api.route("/personal_details", methods=["GET"])
+@pers_api.route("/personal_details/", methods=["GET"])
 def personal_details():
-    result = None
     uid = request.args["uid"]
     if uid:
         result = Message.get_unenroll(uid=uid)
 
         delattr(result[0], "cardid")  # 删除属性
 
-    return jsonify(result)
+        return jsonify(result)
 
 
 @pers_api.route("/collect", methods=["GET"])

@@ -23,6 +23,7 @@ from app.config.secure import WxAppidSecretSecure
 from app.controller.save import Save
 from app.controller.treating import enroll_data
 from app.models.message import Message
+from app.models.search_message import Serch_message
 from app.models.selection import Selection
 from app.models.user import User
 from app.validators.love_forms import MessageForm
@@ -86,39 +87,41 @@ def index(userid=None):
 
     return render_template("index.html", result=result)
 
-@wechat.route("/integral/<userid>", methods=[ "GET"])
-@wechat.route("/integral", methods=['GET'])
-def integral(userid=None):
-    mess = Message.get_messid(uid=userid)
-    print(mess)
+
+@wechat.route("/integral/", methods=[ "GET"])
+def integral():
+    userid = request.args["userid"]
+
+    if userid:
+        mess = Message.get_messid(uid=userid)
+
 
     return render_template("integral.html", userid=userid)
 
 
-@wechat.route("/activity/<userid>", methods=["POST", "GET"])
-@wechat.route("/activity", methods=['GET'])
-def activity(userid=None):
+@wechat.route("/activity/", methods=["POST", "GET"])
+def activity():
+    userid = request.args["userid"]
 
     return render_template("activity.html", userid=userid)
 
 
-@wechat.route("/activity_details/<userid>", methods=["POST", "GET"])
-@wechat.route("/activity_details", methods=["GET"])
-def activity_details(userid=None):
-    return render_template("activity_details.html")
+@wechat.route("/activity_details/", methods=["POST", "GET"])
+def activity_details():
+    userid = request.args["userid"]
+    return render_template("activity_details.html", userid=userid)
 
 
-@wechat.route("/consumption/<userid>", methods=["POST", "GET"])
-@wechat.route("/consumption", methods=["GET"])
-def consumption(userid):
+@wechat.route("/consumption/", methods=["POST", "GET"])
+def consumption():
+    userid = request.args["userid"]
 
-    return render_template("consumption.html")
+    return render_template("consumption.html", userid=userid)
 
 
-@wechat.route("/enroll/<userid>", methods=["POST", "GET"])
-@wechat.route("/enroll", methods=["POST", "GET"])
-def enroll(userid=None):
-
+@wechat.route("/enroll/", methods=["POST", "GET"])
+def enroll():
+    userid = request.args["userid"]
     form = MessageForm(request.form)
 
     if request.method == "POST":
@@ -157,70 +160,70 @@ def enroll(userid=None):
     return render_template("enroll.html", userid=userid)
 
 
-@wechat.route("/vip_hyfw/<userid>", methods=["GET"])
-@wechat.route("/vip_hyfw")
-def vip_hyfw(userid=None):
-    return render_template("vip_hyfw.html", userid)
+@wechat.route("/vip_hyfw/", methods=["GET"])
+def vip_hyfw():
+    userid = request.args['userid']
+    return render_template("vip_hyfw.html", userid=userid)
 
 
-@wechat.route("/my_balance/<userid>", methods=["GET"])
-@wechat.route("/my_balance")
-def my_balance(userid=None):
+@wechat.route("/my_balance/", methods=["GET"])
+def my_balance():
+    userid = request.args["userid"]
 
     return render_template("my_balance.html", userid=userid)
 
 
-@wechat.route("/upenroll/<userid>", methods=["GET"])
-@wechat.route(("/upenroll"))
-def upenroll(userid=None):
-
+@wechat.route("/upenroll/", methods=["GET"])
+def upenroll():
+    userid = request.args["userid"]
     return render_template("upenroll.html", userid=userid)
 
 
-@wechat.route("/message/<userid>", methods=["GET"])
-@wechat.route("/message", methods=["GET"])
-def message(userid=None):
+@wechat.route("/message/", methods=["GET"])
+def message():
+    userid = request.args["userid"]
 
     return render_template("message.html", userid=userid)
 
 
-@wechat.route("/message_details/<userid>", methods=["GET"])
-@wechat.route("/message_details", methods=["GET"])
-def message_details(userid=None):
-    User.add_vip(userid)
-    return render_template("message_details.html")
+@wechat.route("/message_details/", methods=["GET"])
+def message_details():
+    userid = request.args["userid"]
+
+    return render_template("message_details.html",  userid=userid)
 
 
-@wechat.route("/order/<userid>", methods=["GET"])
-@wechat.route("/order", methods=["GET"])
-def order(userid=None):
-    return render_template("order.html")
+@wechat.route("/order/", methods=["GET"])
+def order():
+    userid = request.args["userid"]
+    return render_template("order.html", userid=userid)
 
 
-@wechat.route("/order_details/<userid>", methods=["GET"])
-@wechat.route("/order_details", methods=["GET"])
-def order_details(userid=None):
+@wechat.route("/order_details/", methods=["GET"])
+def order_details():
+    userid = request.args["userid"]
     return render_template("order_details.html", userid=userid)
 
 
-@wechat.route("/personal/<userid>", methods=["GET"])
-@wechat.route("/personal", methods=["GET"])
-def personal(userid=None):
+@wechat.route("/personal/", methods=["GET"])
+def personal():
+    userid = request.args["userid"]
+    if userid:
+        mess_data =Message.get_message(userid)
+        mess_data["userid"] = userid
+        return render_template("personal.html", mess_data=mess_data)
 
-    mess_data =Message.get_message(userid)
-    mess_data["userid"] = userid
-    return render_template("personal.html", mess_data=mess_data)
+@wechat.route("/personal_details/", methods=["GET"])
+def personal_details():
+    uid = request.args["uid"]
+    if uid:
 
-@wechat.route("/personal_details/<userid>", methods=["GET"])
-@wechat.route("/personal_details", methods=["GET"])
-def personal_details(userid=None):
-
-    return render_template("personal_details.html")
+        return render_template("personal_details.html", uid=uid)
 
 
-@wechat.route("/recharge/<userid>", methods=["GET"])
-@wechat.route("/recharge", methods=["GET"])
-def recharge(userid=None):
+@wechat.route("/recharge/", methods=["GET"])
+def recharge():
+    userid = request.args["userid"]
     if request.method == "POST":
         if userid:
             openid = User.get_openid(userid)
@@ -230,37 +233,34 @@ def recharge(userid=None):
     return render_template("recharge.html", userid=userid)
 
 
-@wechat.route("/recharge_vip/<userid>", methods=["GET"])
-@wechat.route("/recharge_vip", methods=["GET"])
-def recharge_vip(userid=None):
+@wechat.route("/recharge_vip/", methods=["GET"])
+def recharge_vip():
     return render_template("Recharge_vip.html")
 
 
-@wechat.route("/search_criteria/<userid>", methods=["GET"])
-@wechat.route("/search_criteria", methods=["GET"])
-def search_criteria(userid=None):
-
-    print(request.data)
-
+@wechat.route("/search_criteria/", methods=["GET"])
+def search_criteria():
 
     return render_template("search_criteria.html")
 
 
-@wechat.route("/search_result/<userid>", methods=["GET"])
-@wechat.route("/search_result", methods=["GET"])
-def search_result(userid=None):
-    return render_template("search_result.html", userid=userid)
+@wechat.route("/search_result/", methods=["GET"])
+def search_result():
+    sex = request.args["sex"]
+    return render_template("search_result.html", sex=sex)
 
 
-@wechat.route("/see_qq/<userid>", methods=["POST", "GET"])
-@wechat.route("/see_qq", methods=["GET"])
-def see_qq(userid=None):
+@wechat.route("/see_qq/", methods=["POST", "GET"])
+def see_qq():
+    result = None
+    id = request.args["id"]
+    if id is not None:
+        result = Serch_message.qq_list(id=id)
 
-    return render_template("see_qq.html")
+    return render_template("see_qq.html", result=result)
 
 
-@wechat.route("/messinfo/<userid>", methods=["POST", "GET"])
-@wechat.route("/messinfo", methods=["GET", "POST"])
+@wechat.route("/messinfo/", methods=["POST", "GET"])
 def messinfo(userid=None):
     if request.method == "POST":
         userid = request.form["userid"]
@@ -270,9 +270,8 @@ def messinfo(userid=None):
     return jsonify(data)
 
 
-@wechat.route("/indexinfo/<userid>", methods=["POST", "GET"])
-@wechat.route("/indexinfo", methods=["GET", "POST"])
-def indexinfo(userid=None):
+@wechat.route("/indexinfo/", methods=["POST", "GET"])
+def indexinfo():
 
     data = Message.get_index()
 

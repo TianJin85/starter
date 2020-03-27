@@ -15,6 +15,8 @@ from lin import Lin
 
 from flask_debugtoolbar import DebugToolbarExtension
 
+
+
 def register_blueprints(app):
     from app.api.v1 import create_v1
     from app.api.cms import create_cms
@@ -94,4 +96,6 @@ def create_app(register_all=True, environment='production'):
     app.config['SECRET_KEY'] = '<replace with a secret key>'
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
     toolbar = DebugToolbarExtension(app)
+
+
     return app

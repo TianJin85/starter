@@ -61,10 +61,10 @@
 	<script>
 		$.ajax({
 			type: "get",
-			url: '{{ url_for("view.wechat+see_qq") }}',
+			url: '{{ url_for("front.personal+search_qq") }}',
 			async: true,
 			data: {
-				'id': getQueryVariable('id')
+				'id': getQueryVariable('id'),
 			},
 			dataType: 'json',
 			success: function (msg) {

@@ -6,26 +6,26 @@
 		<title>会员服务</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav navs">
-			<a class="mui-action-back"><img src="images/4129.png"/>返回</a>
+			<a class="mui-action-back"><img src="{{url_for('static', filename='images/4129.png')}}"/>返回</a>
 			<h1 class="mui-title">会员服务</h1>
 		</header>
 		<div class="mui-content">
 		    <div class="sty_vip">
-		    	<img src="images/4338.png"/>
+		    	<img src="{{url_for('static', filename='images/4338.png')}}"/>
 		    </div>
 		    <div class="huiyzq">
-		    	<img src="images/3664.png"/>
+		    	<img src="{{url_for('static', filename='images/3664.png')}}"/>
 		    	<div class="vip_ltile">
 		    		<h4>会员专区</h4>
 		    		<div class="hiys">
-		    			<div class="imgs_vip"><img src="images/03.png"/></div>
+		    			<div class="imgs_vip"><img src="{{url_for('static', filename='images/03.png')}}"/></div>
 		    			<div class="vip_name">
-		    				<h5>刘大姐 <img src="images/4339.png"/></h5>
+		    				<h5>刘大姐 <img src="{{url_for('static', filename='images/4339.png')}}"/></h5>
 		    				<p>有效期至 2020-06-10</p>
 		    			</div>
 		    		</div>
@@ -43,7 +43,7 @@
 		    	</ul>
 		    </div>
 		</div>
-		<script src="js/mui.min.js"></script>
+		<script src="{{url_for('static', filename='js/mui.min.js')}}"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>

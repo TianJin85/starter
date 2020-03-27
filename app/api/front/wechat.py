@@ -29,14 +29,14 @@ def search_sex():
 
 @front.route("/search_id", methods=["GET"])
 def search_id():
-    result = None
+
     uid = request.args["uid"]
     if uid:
         result = Message.get_unenroll(uid=uid)
 
         delattr(result[0], "cardid")  # 删除属性
 
-    return jsonify(result)
+        return jsonify(result)
 
 
 @front.route("/search_criteria", methods=["GET"])
