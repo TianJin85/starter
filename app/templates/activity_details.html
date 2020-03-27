@@ -17,7 +17,8 @@
 		<div class="mui-content">
 			<div class="boxst">
 				<div class="boxst_img">
-					<img src="{{ url_for('static', filename='images/2.png') }}" />
+					<div class="imag"></div>
+					
 					<div class="titmee">
 						<p>
 							<span>截止日期：仅剩：</span>
@@ -34,33 +35,16 @@
 				</div>
 				<div class="boxsts">
 					<div class="boxst_name">
-						<h4>某某某活动名称活动名称活动某某某活动名称活动名称活动某某某活动名称活动名称活动...</h4>
+						<h4 class="bost_titles"></h4>
 						<div class="vip_div">
-							<button class="jiage">￥48.00</button>
+							<button class="jiage">￥<span class="momsey"></span></button>
 							<button class="mvip">vip免费</button>
-							<p>已报名:<span>27/30</span></p>
+							<p>已报名:<span class="wangms"></span></p>
 						</div>
 					</div>
 					<div class="activsd_titme">
 						<ul class="actid_ul">
-							<li>
-								<a href="#">
-									<label>活动时间</label>
-									<p>2020-02-08</p>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<label>活动地址</label>
-									<p>安顺某某某地区位置</p>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<label>活动发起人</label>
-									<p>某某某</p>
-								</a>
-							</li>
+							
 						</ul>
 					</div>
 				</div>
@@ -75,23 +59,23 @@
 						<!--活动内容-->
 						<div class="susta">
 							<div class="article_content article_content1">
-								<h5>一、活动宗旨</h5>
-								<p> 企业青年“快乐有约” 区别于传统相亲形式，采用企业会员制，以营造轻松、快乐的交友派对氛围为前提，不定期开展丰富多彩的趣味活动，每期由某企业家出资赞助，将“员工相亲”上升为员工的福利，充分体现企业家对本企业未婚青年男女的关怀，在企业为员工提供创造物质财富平台的基础上，在员工追求有房有车的基础上，企业家尽力为员工创造“有家有快乐的企业文化”...</p>
+								<h5>活动宗旨</h5>
+								<p class="active_zong"></p>
 							</div>
-							<div class="more_cons">查看全文  <span class="mui-icon mui-icon-arrowdown"></span></div>
+							<!-- <div class="more_cons">查看全文  <span class="mui-icon mui-icon-arrowdown"></span></div> -->
 						</div>
 						<!--活动规则-->
 						<div class="susta" style="display: none;">
 							<div class="article_content">
-								<h5>一、活动规则</h5>
-								<p> 企业青年“快乐有约” 区别于传统相亲形式，采用企业会员制，以营造轻松、快乐的交友派对氛围为前提，不定期开展丰富多彩的趣味活动，每期由某企业家出资赞助，将“员工相亲”上升为员工的福利，充分体现企业家对本企业未婚青年男女的关怀，在企业为员工提供创造物质财富平台的基础上，在员工追求有房有车的基础上，企业家尽力为员工创造“有家有快乐的企业文化”...</p>
+								<h5>活动规则</h5>
+								<p class="guizhis"></p>
 							</div>
 						</div>
 						<!--其他信息-->
 						<div class="susta" style="display: none;">
 							<div class="article_content">
-								<h5>一、其他信息</h5>
-								<p> 企业青年“快乐有约” 区别于传统相亲形式，采用企业会员制，以营造轻松、快乐的交友派对氛围为前提，不定期开展丰富多彩的趣味活动，每期由某企业家出资赞助，将“员工相亲”上升为员工的福利，充分体现企业家对本企业未婚青年男女的关怀，在企业为员工提供创造物质财富平台的基础上，在员工追求有房有车的基础上，企业家尽力为员工创造“有家有快乐的企业文化”...</p>
+								<h5>其他信息</h5>
+								<p> </p>
 							</div>
 						</div>
 					</div>
@@ -115,6 +99,49 @@
 			mui.init()
 		</script>
 		<script type="text/javascript">
+			$.ajax({
+				type: "set",
+			url: '{{url_for("front.wechat+activity_details")}}',
+			async: true,
+			data: {
+				ctivity_id: getQueryVariable('activity_id')
+			},
+			dataType: 'json',
+			success:function(msg){
+				console.log(msg)
+				var imag = '<img src="/static/'+msg.images+'">';
+				var bost_titles = msg.message;
+				var momsey = msg.money;
+				var wangms = msg.num;
+				var guizhis = msg.rulel
+				// var stop_da = str_to_date(msg.stop_date, '%Y-%m-%d %H');
+				var actid_ul = '<li><a href="#"><label>活动时间</label><p></p></a></li><li><a href="#"><label>活动地址</label><p>'+msg.address+'</p></a></li><li><a href="#"><label>活动发起人</label><p>'+msg.initiator+'</p></a></li>';
+				$(".bost_titles").html(bost_titles)
+				$(".imag").html(imag);
+				$(".momsey").html(momsey);
+				$(".wangms").html(wangms);
+				$(".actid_ul").html(actid_ul)
+				$(".guizhis").html(guizhis)
+				
+			},
+			error:function(){
+				console.log("网络错误")
+			}
+			})
+			function getQueryVariable(variable) {
+			
+			var query = window.location.search.substring(1);
+			
+			var vars = query.split("&");
+			for (var i = 0; i < vars.length; i++) {
+				var pair = vars[i].split("=");
+				if (pair[0] == variable) {
+					return pair[1];
+				}
+			}
+			
+			return (false);
+		}
 			$(function() {
 				var slideHeight = 245;
 				var defHeight = $(".article_content1").height();

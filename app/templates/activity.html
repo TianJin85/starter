@@ -82,7 +82,7 @@
 				for (var i = 0; i < datas.length; i++) {
 					if (datas[i].expire >0) {
 						activety_list += '<li>' +
-							'<a href="view/wechat/activity_details/?activity_id=9">' +
+							'<a href="view/wechat/activity_details/?activity_id='+datas[i].id+'">' +
 							'	<img src="/static/'+datas[i].images+'">' +
 							'<h4>'+datas[i].message+'</h4>' +
 							'<div class="vip_div">' +
@@ -98,7 +98,7 @@
 							'</li>'
 
 							activety_list2 += '<li>' +
-							'<a href="/view/wechat/activity_details/1">' +
+							'<a href="/view/wechat/activity_details/?activity_id='+datas[i].id+'">' +
 							'	<img src="/static/'+datas[i].images+'">' +
 							'<h4>'+datas[i].message+'</h4>' +
 							'<div class="vip_div">' +
@@ -114,7 +114,7 @@
 							'</li>'
 					}else if(datas[i].apply ==true){
 						activety_list += '<li>' +
-							'<a href="/view/wechat/activity_details/1">' +
+							'<a href="/view/wechat/activity_details/?activity_id='+datas[i].id+'">' +
 								'	<img src="/static/'+datas[i].images+'">' +
 							'<h4>'+datas[i].message+'</h4>' +
 							'<div class="vip_div">' +
@@ -130,7 +130,7 @@
 							'</li>'
 
 							activety_list3 += '<li>' +
-							'<a href="/view/wechat/activity_details/1">' +
+							'<a href="/view/wechat/activity_details/?activity_id='+datas[i].id+'">' +
 								'	<img src="/static/'+datas[i].images+'">' +
 							'<h4>'+datas[i].message+'</h4>' +
 							'<div class="vip_div">' +
@@ -146,7 +146,7 @@
 							'</li>'
 					}else if(datas[i].expire <=0){
 						activety_list += '<li>' +
-							'<a href="/view/wechat/activity_details/1">' +
+							'<a href="/view/wechat/activity_details/?activity_id='+datas[i].id+'">' +
 								'	<img src="/static/'+datas[i].images+'">' +
 							'<h4>'+datas[i].message+'</h4>' +
 							'<div class="vip_div">' +
@@ -162,7 +162,7 @@
 							'</li>'
 
 							activety_list4 += '<li>' +
-							'<a href="/view/wechat/activity_details/1">' +
+							'<a href="/view/wechat/activity_details/?activity_id='+datas[i].id+'">' +
 								'	<img src="/static/'+datas[i].images+'">' +
 							'<h4>'+datas[i].message+'</h4>' +
 							'<div class="vip_div">' +

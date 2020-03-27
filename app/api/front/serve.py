@@ -17,22 +17,38 @@ from app.note.server import NoetServer
 
 server_api = Redprint("server")
 
-globals()
+
 codes = {}
 
 
-@server_api.route("/note", methods=["GET"])
+@server_api.route("/note/", methods=["GET"])
 def server_note():
     id = request.args["id"]
     phone = request.args["phone"]
-    if id and re.match(r'1[3,4,5,7,8]\d{9}', phone):
 
-        code = NoetServer.random_code()
-        code["date"] = datetime.now()
+    if id and re.search(r'1[3,4,5,7,8]\d{9}', phone):
 
-        codes[id] = {"code": code}
-        resp = eval(NoetServer(phone=phone, code_dict=code).send_code())
-        if resp["Message"]=="OK":
-            return Success(msg="短信发送成功")
+        for items in list(codes.keys()):
+            for item in codes[items]:
+
+                second = (datetime.now() - codes[items][item]["date"]).seconds/60  # 获取所有验证码存在的时间
+                if second >= 5:     # 超过五分钟则删除
+                    codes.pop(items)    # 删除验证码
+
+        if id not in codes:
+            code = NoetServer.random_code()
+            code["date"] = datetime.now()
+
+            codes[id] = {"code": code}
+            # resp = eval(NoetServer(phone=phone, code_dict={"code": code}).send_code())
+            # if resp["Message"]=="OK":
+            #     return Success(msg="短信发送成功")
+
+        else:
+            return Success(msg="短信以发送请5分钟后重试")
+
     else:
         return Success(msg="电话号码格式不正确请重新输入")
+
+
+

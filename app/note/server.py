@@ -48,9 +48,7 @@ class NoetServer:
         code_dict = {"code": ''.join(code)}
         return code_dict
 
-#
+
 # if __name__ == '__main__':
-#     noet = NoetServer("15908560480")
-#
-#
-#     print(noet.send_code(), noet.code_dict)
+#     noet = NoetServer("15908560480", code_dict={"code": 2233}).send_code()
+#     print(noet)

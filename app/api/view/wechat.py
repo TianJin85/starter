@@ -22,6 +22,7 @@ from app.config.pya_setting import get_jsapi_params, get_openid
 from app.config.secure import WxAppidSecretSecure
 from app.controller.save import Save
 from app.controller.treating import enroll_data
+from app.models.commodity import Commodity
 from app.models.ctivity import Ctivity
 from app.models.message import Message
 from app.models.search_message import Serch_message
@@ -256,12 +257,17 @@ def search_result():
 @wechat.route("/see_qq/", methods=["POST", "GET"])
 def see_qq():
     result = None
-    id = request.args["id"]
+    id = request.args["userid"]
     if id is not None:
         result = Serch_message.qq_list(id=id)
 
     return render_template("see_qq.html", result=result)
 
+
+@wechat.route("/see_wx/", methods=["POST", "GET"])
+def see_wx():
+
+    return render_template('see_wx.html')
 
 @wechat.route("/messinfo/", methods=["POST", "GET"])
 def messinfo(userid=None):
@@ -300,3 +306,11 @@ def paryment():
 
     return render_template("wx_js_pay.html", context={'params': get_jsapi_params("oB2YTuAUMHUAGZLPRPI_kfMbV5sg")})
 
+
+
+
+@wechat.route("/add_commodity", methods=['GET'])
+def add_commodity():
+    comm = Commodity()
+    comm.add_commdity()
+    return Success(msg="添加成功")

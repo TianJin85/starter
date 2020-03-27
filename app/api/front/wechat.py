@@ -96,6 +96,15 @@ def apply():
 def activity_details():
 
     ctivity_id = request.args["ctivity_id"]
-    print(ctivity_id)
     ctivity_data =  Ctivity.activity_details(ctivity_id=ctivity_id)
+    if ctivity_data:
+
+        date = eval(ctivity_data.__dict__["date"])
+        stop_date = date[0]
+        start_date = date[1]
+        setattr(ctivity_data, "stop_date", stop_date)
+        setattr(ctivity_data, "start_date", start_date)
+        ctivity_data._fields.append("stop_date")
+        ctivity_data._fields.append("start_date")
+
     return jsonify(ctivity_data)

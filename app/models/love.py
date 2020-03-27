@@ -81,7 +81,7 @@ class Love_commodity(Base):
     id = Column("id", Integer, primary_key=True, autoincrement=True, comment="商品id")
     name = Column("name", String(60), comment="商品名称")
     monthly = Column("monthly", Float, comment="商品价格")
-    type = Column("type", String(30), comment="商品类型")
+    _type = Column("_type", String(30), comment="商品类型")
     comment = Column("comment", String(200), comment="商品描述")
 
 
