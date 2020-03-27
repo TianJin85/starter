@@ -22,6 +22,7 @@ from app.config.pya_setting import get_jsapi_params, get_openid
 from app.config.secure import WxAppidSecretSecure
 from app.controller.save import Save
 from app.controller.treating import enroll_data
+from app.models.ctivity import Ctivity
 from app.models.message import Message
 from app.models.search_message import Serch_message
 from app.models.selection import Selection
@@ -108,8 +109,10 @@ def activity():
 
 @wechat.route("/activity_details/", methods=["POST", "GET"])
 def activity_details():
-    userid = request.args["userid"]
-    return render_template("activity_details.html", userid=userid)
+
+    activity_id = request.args["activity_id"]
+
+    return render_template("activity_details.html", activity_id=activity_id)
 
 
 @wechat.route("/consumption/", methods=["POST", "GET"])

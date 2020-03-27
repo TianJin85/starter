@@ -91,3 +91,11 @@ def apply():
         return UnknownException("报名失败")
     return Success(msg="报名成功")
 
+
+@front.route("/activity_details/", methods=["GET"])
+def activity_details():
+
+    ctivity_id = request.args["ctivity_id"]
+    print(ctivity_id)
+    ctivity_data =  Ctivity.activity_details(ctivity_id=ctivity_id)
+    return jsonify(ctivity_data)

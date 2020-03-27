@@ -35,12 +35,22 @@ class Ctivity(Love_ctivity):
 
     @classmethod
     def get_ctivity(cls):
+        """
+        获取所有活动信息
+        :return:
+        """
         ctivity = Love_ctivity.query.all()
 
         return ctivity
 
     @classmethod
     def apply(cls, id, ctivity_id):
+        """
+        活动报名
+        :param id: 用户id
+        :param ctivity_id: 活动id
+        :return:
+        """
         ctivity = Love_ctivity.query.filter_by(id=ctivity_id).first()
         id_list = []
         if ctivity:
@@ -70,4 +80,15 @@ class Ctivity(Love_ctivity):
                     commit=True
                 )
         return True
+
+    @classmethod
+    def activity_details(cls, ctivity_id):
+        ctivity = Love_ctivity.query.filter_by(id=ctivity_id).first()
+        if ctivity:
+            return ctivity
+        else:
+            return ParameterException(msg="活动不存在")
+
+
+
 
