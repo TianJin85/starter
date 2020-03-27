@@ -3,7 +3,9 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>查看过QQ的人</title>
+	{% block title %}
+		<title>查看过QQ的人</title>
+	{% endblock %}
 	<meta name="viewport"
 		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link href="{{ url_for('static', filename='css/mui.min.css') }}" rel="stylesheet" />
@@ -13,7 +15,9 @@
 <body>
 	<header class="mui-bar mui-bar-nav navs">
 		<a class="mui-action-back"><img src="{{ url_for('static', filename='images/4129.png') }}" />返回</a>
-		<h1 class="mui-title">查看过QQ的人</h1>
+		{% block h1 %}
+			<h1 class="mui-title">查看过QQ的人</h1>
+		{% endblock %}
 	</header>
 	<div class="mui-content">
 		<div class="ren_list">
